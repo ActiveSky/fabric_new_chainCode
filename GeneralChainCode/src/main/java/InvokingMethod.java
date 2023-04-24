@@ -78,6 +78,7 @@ public class InvokingMethod {
             throw new ChaincodeException(errorMessage);
         }
         stub.putStringState(key, json);
+//
         return json;
     }
 

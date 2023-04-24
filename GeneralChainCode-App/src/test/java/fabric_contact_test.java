@@ -9,15 +9,21 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class Test02 {
+public class fabric_contact_test {
 
     /*测试提交数据*/
     @Test
     public void test1() throws Exception {
         FabricGateway fabricGateway = new FabricGateway();
         Contract contract = fabricGateway.getContract();
-        String values = "{\"author\":\"ShanZJ002\",\"email\":\"gvssimux@qq.com\",\"name\":\"GeneralChainCode\",\"url\":\"www.gvssimux.com\"}";
-        contract.submitTransaction("createData","test003",values);
+        String value_1 = "{\n\"id\":\"1\",\n\"idB\":\"1\",\n\"idS\":\"47\",\n\"totalPrice\":\"50000\"\n}";
+        String value_2 = "{\n\"id\":\"2\",\n\"idB\":\"2\",\n\"idS\":\"47\",\n\"totalPrice\":\"45000\"\n}";
+        String value_3 = "{\n\"id\":\"1\",\n\"num\":\"100\",\n\"price\":\"1\",\n\"orderStatus\":\"0\"\n}";
+
+        byte[] bytes=contract.submitTransaction("createData","test0013",value_3);
+        String s = new String(bytes);
+        System.out.println("test11");
+        System.out.println(s);
     }
 
     /*测试查询数据*/
@@ -26,7 +32,9 @@ public class Test02 {
         FabricGateway fabricGateway = new FabricGateway();
         Contract contract = fabricGateway.getContract();
         String values = "{\"author\":\"ShanZJ002\",\"email\":\"gvssimux@qq.com\",\"name\":\"GeneralChainCode\",\"url\":\"www.gvssimux.com\"}";
-        byte[] bytes = contract.evaluateTransaction("queryData", "test001");
+        byte[] bytes = contract.evaluateTransaction("queryData", "test009");
+        System.out.println(new String(bytes));
+
     }
 
 
@@ -36,7 +44,7 @@ public class Test02 {
         FabricGateway fabricGateway = new FabricGateway();
         Contract contract = fabricGateway.getContract();
         String values = "{\"author\":\"Gvssimux\",\"email\":\"simux@qq.com\",\"name\":\"GeneralChainCode\",\"url\":\"www.simux.com\"}";
-        contract.submitTransaction("updateData","test001",values);
+        contract.submitTransaction("updateData","test003",values);
     }
 
 
